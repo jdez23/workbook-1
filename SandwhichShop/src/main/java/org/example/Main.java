@@ -7,8 +7,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         // Prompt for sandwich size
-        System.out.print("Enter sandwich size (1 for half, 2 for whole): ");
+        System.out.print("Enter sandwich size (1 for Regular, 2 for Large): ");
         int size = scanner.nextInt();
+        scanner.nextLine();
 
         double basePrice;
 
@@ -17,8 +18,18 @@ public class Main {
         } else if (size == 2) {
             basePrice = 8.95;
         } else {
-            System.out.println("Invalid size. Please enter 1 or 2.");
+            System.out.println("Please enter 1 or 2.");
             return;
+        }
+
+        // Ask if they want the sandwich loaded
+        System.out.print("Would you like your sandwich loaded? Enter true or false: ");
+        boolean isLoaded = scanner.nextBoolean();
+
+        if (isLoaded && size == 1) {
+            basePrice += 1.00;
+        } else if (isLoaded && size == 2) {
+            basePrice += 1.75;
         }
 
         // Prompt for age
@@ -28,17 +39,16 @@ public class Main {
         double discount = 0;
 
         if (age <= 17) {
-            discount = 0.10; // 10% for students
+            discount = 0.10;
         } else if (age >= 65) {
-            discount = 0.20; // 20% for seniors
+            discount = 0.20;
         }
 
-        // 💸 Apply discount if any
+        // Apply discount
         double finalPrice = basePrice - (basePrice * discount);
 
-        // 🧾 Display the result
+        // Display the result
         System.out.printf("Your sandwich will cost: $%.2f\n", finalPrice);
-
 
     }
 }
