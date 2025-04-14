@@ -21,5 +21,31 @@ public class Main {
 
         System.out.println(name + ", Your gross pay is: " + pay);
 
+        float overtimeHours;
+        double overtimePay = 0;
+        double totalPay = 0;
+
+        if(hours > 40){
+            overtimeHours = hours - 40;
+            overtimePay = overtimeHours * (payrate * 1.5);
+            totalPay = overtimePay + pay;
+
+        }
+
+        System.out.print("name: " + name + "\nPay: ");
+        System.out.printf("%.2f" ,pay);
+        System.out.println();
+
+        if (overtimePay > 0){
+            System.out.println("\nCongradulations! You made overtime pay.\n");
+            System.out.print("Overtime Pay: ");
+            System.out.printf("%.2f",overtimePay);
+            System.out.print("\nTotal: ");
+            System.out.printf("%.2f", totalPay);
+            System.out.println();
+
+
+        }
+
     }
 }
